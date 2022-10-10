@@ -40,7 +40,7 @@ const Product = ({ productData, index }) => {
           <Text variant="section" mt={3}>
             {productData.text}
           </Text>
-          <Button alignSelf="flex-end" mt={4}>
+          <Button alignSelf="flex-end" borderRadius={0} mt={4}>
             Request quotation
           </Button>
         </Box>

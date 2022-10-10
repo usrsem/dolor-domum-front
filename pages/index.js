@@ -10,7 +10,7 @@ const HomePage = () => {
     <>
       <Greeting
         title="Hello there"
-        text="Providing you with the optimal ways to keep the ideal temperature in your building all year round."
+        text="We bring warmth and light into your home."
         imagePath="/images/main/1.jpg"
         delay={0.1}
       />

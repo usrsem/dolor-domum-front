@@ -7,18 +7,18 @@ import {
   Box,
   Heading,
   Button,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 const ContactInput = (props) => {
-  const { isRequired, inputType, children } = props;
+  const { isRequired, inputType, children, placeholder } = props;
   return (
     <FormControl mb={2} isRequired={isRequired}>
       <FormLabel>{children}</FormLabel>
       <Input
+        placeholder={placeholder}
         _focus={{
-          border: "1px solid primary4",
-          boxShadow: "0 0 0 1px primary4",
+          border: "1px solid #cecece",
+          boxShadow: "0 0 0 1px #cecece",
         }}
         borderRadius={0}
         type={inputType}
@@ -34,8 +34,8 @@ const ContactTextarea = (props) => {
       <FormLabel>{children}</FormLabel>
       <Textarea
         _focus={{
-          border: "1px solid primary4",
-          boxShadow: "0 0 0 1px primary4",
+          border: "1px solid #cecece",
+          boxShadow: "0 0 0 1px #cecece",
         }}
         borderRadius={0}
       />
@@ -69,13 +69,21 @@ const ContactUs = () => {
           Contact us!
         </Heading>
 
-        <ContactInput isRequired inputType="text">
+        <ContactInput
+          isRequired
+          inputType="text"
+          placeholder="Markus Bergstein"
+        >
           Fullname
         </ContactInput>
-        <ContactInput isRequired inputType="email">
+        <ContactInput
+          isRequired
+          inputType="email"
+          placeholder="markus.bergstein@gmx.com"
+        >
           E-mail
         </ContactInput>
-        <ContactInput isRequired inputType="phone">
+        <ContactInput isRequired placeholder="+431234567890" inputType="phone">
           Phone
         </ContactInput>
         <ContactTextarea>Message</ContactTextarea>

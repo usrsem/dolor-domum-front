@@ -6,12 +6,12 @@ const Greeting = ({ title, text, imagePath, delay }) => {
   return (
     <Box
       w="100%"
+      h={{ base: "calc(100vh - 3.5em)", lg: "calc(67vh - 3.5em)" }}
       px={10}
       display="flex"
       alignItems={{ base: "flex-start", md: "center" }}
       pt={{ base: "30vh", md: 0 }}
       justifyContent={{ base: "flex-start", md: "flex-end" }}
-      h="calc(100vh - 3.5em)"
       backgroundImage={`url(${imagePath})`}
       backgroundRepeat="no-repeat"
       backgroundSize="cover"

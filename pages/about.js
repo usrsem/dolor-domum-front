@@ -31,11 +31,7 @@ const AboutText = () => {
 const About = () => {
   return (
     <>
-      <Greeting
-        title="About"
-        text="smth about"
-        imagePath="/images/main/4.jpg"
-      />
+      <Greeting title="About" imagePath="/images/main/4.jpg" />
       <AboutText />
       <Footer />
     </>
