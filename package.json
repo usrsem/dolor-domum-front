@@ -20,7 +20,7 @@
     "dev": "next dev",
     "export": "next export",
     "start": "next start",
-    "build": "next build && next export",
+    "build": "next build",
     "test": "next test"
   },
   "eslintConfig": {
@@ -40,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0"
   }
 }
