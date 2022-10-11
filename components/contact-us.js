@@ -8,7 +8,6 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { sendMessage } from "../lib/telegram.js";
 
 const ContactInput = (props) => {
@@ -65,12 +64,12 @@ const ContactUs = ({ withBg, withTitle }) => {
       text: message,
     };
 
-    sendMessage(message);
-
-    setFullname("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
+    sendMessage(message).then(() => {
+      setFullname("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    });
   };
 
   return (
