@@ -20,7 +20,7 @@ const HomePage = () => {
         delay={0.2}
       />
       <Partners />
-      <ContactUs />
+      <ContactUs withBg withTitle />
       <Footer />
     </>
   );

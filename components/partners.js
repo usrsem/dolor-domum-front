@@ -6,13 +6,12 @@ const Partner = ({ imagePath }) => {
     <Box
       display="inline-block"
       borderRadius="50%"
-      border="3px solid"
-      borderColor="primary1"
+      border="3px solid #1e2f23"
       bg="white"
       m={2}
       position="relative"
-      w={{ base: 100, md: 200 }}
-      h={{ base: 100, md: 200 }}
+      w={{ base: 100, md: 150 }}
+      h={{ base: 100, md: 150 }}
       overflow="hidden"
     >
       <Image

@@ -1,13 +1,14 @@
 import React from "react";
 import { Box, Center, Divider, Heading, Text, Stack } from "@chakra-ui/react";
 import { PhoneIcon, EmailIcon } from "@chakra-ui/icons";
+import Address from "./icons/address.js";
 
-const FooterInfo = ({ icon, text }) => {
+const FooterInfo = ({ icon, children }) => {
   return (
     <Center>
-      {icon}
-      <Text variant="footer" pl={3}>
-        {text}
+      <Text variant="footer" pl={3} position="relative">
+        {icon}
+        {children}
       </Text>
     </Center>
   );
@@ -22,10 +23,13 @@ const Footer = () => {
           <Heading as="h1" my={5} textAlign="center">
             Dolor Domum
           </Heading>
-          <FooterInfo text="4400, Steyr, Austria" />
-          <FooterInfo text="Damberggasse 10" />
-          <FooterInfo icon={<EmailIcon />} text="dolordomum1@gmail.com" />
-          <FooterInfo icon={<PhoneIcon />} text="+436766249716" />
+          <FooterInfo>
+            4400, Steyr, Austria
+            <br />
+            Damberggasse 10
+          </FooterInfo>
+          <FooterInfo>dolordomum1@gmail.com</FooterInfo>
+          <FooterInfo>+436766249716</FooterInfo>
         </Box>
       </Center>
       <Stack w="100%" bg="blackAlpha.700" py={3} spacing={0}>

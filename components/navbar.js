@@ -45,7 +45,7 @@ const Navbar = (props) => {
         justifyContent="space-between"
       >
         <Flex align="center">
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+          <Heading as="h1" letterSpacing={"tighter"}>
             <Logo />
           </Heading>
         </Flex>
@@ -78,10 +78,12 @@ const Navbar = (props) => {
               <MenuButton
                 as={IconButton}
                 icon={<HamburgerIcon />}
+                borderRadius={0}
+                border="none"
                 variant="outline"
                 aria-label="Options"
               />
-              <MenuList zIndex={1000}>
+              <MenuList bg="primary2">
                 <NextLink href="/" passHref>
                   <MenuItem as={Link}>Home</MenuItem>
                 </NextLink>

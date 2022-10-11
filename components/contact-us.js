@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -8,6 +8,7 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react";
+import { sendMessage } from "../lib/telegram.js";
 
 const ContactInput = (props) => {
   const { isRequired, inputType, children, placeholder } = props;
@@ -43,51 +44,88 @@ const ContactTextarea = (props) => {
   );
 };
 
-const ContactUs = () => {
+const ContactUs = ({ withBg, withTitle }) => {
   const contactUsBgImg = "/images/callback/background.jpg";
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleFullnameChange = (e) => setFullname(e.target.value);
+  const handleEmalChange = (e) => setEmail(e.target.value);
+  const handlePhoneChange = (e) => setPhone(e.target.value);
+  const handleMessageChange = (e) => setMessage(e.target.value);
+
+  const submit = () => {
+    const message = {
+      fullname,
+      email,
+      phone,
+      text: message,
+    };
+
+    sendMessage(message);
+  };
+
   return (
     <Box
       w="100%"
-      py={10}
+      py={withBg ? 10 : 0}
       display="flex"
       alignItems="center"
       justifyContent="center"
-      backgroundImage={`url(${contactUsBgImg})`}
+      backgroundImage={withBg ? `url(${contactUsBgImg})` : ""}
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
     >
       <Box
-        h="80%"
-        px={10}
-        py={7}
-        w={{ base: "90%", md: "60%" }}
+        h={withBg ? "80%" : "100%"}
+        px={withBg ? 10 : 0}
+        py={withBg ? 7 : 0}
+        w={withBg ? { base: "90%", md: "60%" } : "100%"}
         bg="primary2"
         display="flex"
         flexDirection="column"
       >
-        <Heading as="h1" textAlign="center" mb={7}>
+        <Heading
+          as="h1"
+          textAlign="center"
+          mb={7}
+          display={withTitle ? "inline-block" : "none"}
+        >
           Contact us!
         </Heading>
-
         <ContactInput
           isRequired
           inputType="text"
+          value={fullname}
+          onChange={handleFullnameChange}
           placeholder="Markus Bergstein"
-        >
-          Fullname
-        </ContactInput>
+          children={"Fullname"}
+        />
         <ContactInput
           isRequired
           inputType="email"
+          value={email}
+          onChange={handleEmalChange}
           placeholder="markus.bergstein@gmx.com"
+          children={"E-mail"}
+        />
+        <ContactInput
+          isRequired
+          inputType="tel"
+          value={phone}
+          onChange={handlePhoneChange}
+          placeholder="+431234567890"
+          children="Phone"
+        />
+        <ContactTextarea children="Message" onChange={handleMessageChange} />
+        <Button
+          onClick={submit}
+          mt="auto"
+          alignSelf="flex-end"
+          borderRadius={0}
         >
-          E-mail
-        </ContactInput>
-        <ContactInput isRequired placeholder="+431234567890" inputType="phone">
-          Phone
-        </ContactInput>
-        <ContactTextarea>Message</ContactTextarea>
-        <Button mt={7} alignSelf="flex-end" borderRadius={0}>
           Submit
         </Button>
       </Box>
