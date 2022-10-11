@@ -19,7 +19,7 @@ const Solar = () => {
 
   return (
     <>
-      <Greeting title="Solar!" imagePath="/images/main/3.jpg" />
+      <Greeting title="Solar" imagePath="/images/main/3.jpg" />
       <Products data={products} />
       <Footer />
     </>

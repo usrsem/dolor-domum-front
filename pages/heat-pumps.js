@@ -28,7 +28,7 @@ const HeatPumps = () => {
   ];
   return (
     <>
-      <Greeting title="Heat pumps!" text="" imagePath="/images/main/2.jpg" />
+      <Greeting title="Heat pumps" text="" imagePath="/images/main/2.jpg" />
       <Products data={products} />
       <Footer />
     </>

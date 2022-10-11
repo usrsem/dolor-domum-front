@@ -19,9 +19,7 @@ const AboutText = () => {
           with a high degree of integrity. We take care of your time, property
           and investments to make you feel comfortable. We create the foundation
           for a sustainable, healthy environment, systems and partnerships. We
-          think long-term. If we make a mistake, we'll do everything we can to
-          correct it to your satisfaction. Give us a call and see what we can do
-          for you.
+          think long-term. Give us a call and see what we can do for you.
         </Text>
       </Center>
     </Box>
