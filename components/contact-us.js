@@ -7,6 +7,7 @@ import {
   Box,
   Heading,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import api from "../lib/telegram.js";
 
@@ -56,6 +57,7 @@ const ContactUs = ({ withBg, withTitle }) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [messageText, setMessage] = useState("");
+  const toast = useToast();
 
   const handleFullnameChange = (e) => setFullname(e.target.value);
   const handleEmalChange = (e) => setEmail(e.target.value);
@@ -75,6 +77,13 @@ const ContactUs = ({ withBg, withTitle }) => {
       setEmail("");
       setPhone("");
       setMessage("");
+      toast({
+        title: "Request sent.",
+        description: "We'll contact you soon",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     });
   };
 
