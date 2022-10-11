@@ -8,10 +8,11 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react";
-import { sendMessage } from "../lib/telegram.js";
+import api from "../lib/telegram.js";
 
 const ContactInput = (props) => {
-  const { isRequired, inputType, children, placeholder } = props;
+  const { isRequired, inputType, children, placeholder, onChange, value } =
+    props;
   return (
     <FormControl mb={2} isRequired={isRequired}>
       <FormLabel>{children}</FormLabel>
@@ -23,17 +24,22 @@ const ContactInput = (props) => {
         }}
         borderRadius={0}
         type={inputType}
+        onChange={onChange}
+        value={value}
       />
     </FormControl>
   );
 };
 
 const ContactTextarea = (props) => {
-  const { isRequired, children } = props;
+  const { isRequired, children, value, placeholder, onChange } = props;
   return (
     <FormControl mb={2} isRequired={isRequired}>
       <FormLabel>{children}</FormLabel>
       <Textarea
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
         _focus={{
           border: "1px solid #cecece",
           boxShadow: "0 0 0 1px #cecece",
@@ -49,7 +55,7 @@ const ContactUs = ({ withBg, withTitle }) => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [messageText, setMessage] = useState("");
 
   const handleFullnameChange = (e) => setFullname(e.target.value);
   const handleEmalChange = (e) => setEmail(e.target.value);
@@ -61,10 +67,10 @@ const ContactUs = ({ withBg, withTitle }) => {
       fullname,
       email,
       phone,
-      text: message,
+      text: messageText,
     };
 
-    sendMessage(message).then(() => {
+    api.sendMessage(message).then(() => {
       setFullname("");
       setEmail("");
       setPhone("");
@@ -124,7 +130,12 @@ const ContactUs = ({ withBg, withTitle }) => {
           placeholder="+431234567890"
           children="Phone"
         />
-        <ContactTextarea children="Message" onChange={handleMessageChange} />
+        <ContactTextarea
+          children="Message"
+          onChange={handleMessageChange}
+          value={messageText}
+          placeholder="Message..."
+        />
         <Button
           onClick={submit}
           mt="auto"
