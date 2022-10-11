@@ -9,6 +9,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { sendMessage } from "../lib/telegram.js";
 
 const ContactInput = (props) => {
   const { isRequired, inputType, children, placeholder } = props;
@@ -64,10 +65,7 @@ const ContactUs = ({ withBg, withTitle }) => {
       text: message,
     };
 
-    axios.post(
-      "http://144.76.42.179:8080/api/v1/contact",
-      JSON.stringify(message)
-    );
+    sendMessage(message);
 
     setFullname("");
     setEmail("");
